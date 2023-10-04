@@ -30,10 +30,6 @@
 	<string>com.Fhazel.TikTalk</string>
 	<key>MinimumOSVersion</key>
 	<string>11.0</string>
-	<key>CFBundleShortVersionString</key>
-	<string>2</string>
-
-	<!--Permissions-->
 	<key>NSCameraUsageDescription</key>
 	<string>Necesitamos acceso a tu cámara para tomar fotos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -57,5 +53,7 @@
 	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Tik &apos;Talk</string>
+	<key>CFBundleShortVersionString</key>
+	<string>3</string>
 </dict>
 </plist>
