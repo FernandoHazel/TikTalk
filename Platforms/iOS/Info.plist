@@ -32,5 +32,30 @@
 	<string>11.0</string>
 	<key>CFBundleShortVersionString</key>
 	<string>2</string>
+
+	<!--Permissions-->
+	<key>NSCameraUsageDescription</key>
+	<string>Necesitamos acceso a tu cámara para tomar fotos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Necesitamos acceso a tus fotos para guardar las imágenes capturadas.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocalizableString</key>
+	<dict>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>Necesitamos acceder a tu ubicación para proporcionar un mejor servicio.</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>Necesitamos acceder a tu ubicación para proporcionar un mejor servicio.</string>
+	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
+	<key>CFBundleDisplayName</key>
+	<string>Tik &apos;Talk</string>
 </dict>
 </plist>
