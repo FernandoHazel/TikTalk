@@ -55,5 +55,7 @@
 	<string>Tik &apos;Talk</string>
 	<key>CFBundleShortVersionString</key>
 	<string>3</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app only use your data to make sure that you are the owner of the app while the timer is in use</string>
 </dict>
 </plist>

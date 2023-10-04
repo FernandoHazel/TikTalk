@@ -33,6 +33,7 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" />
+		<!-- ForegroundFile="Resources\AppIcon\appiconfg.png" BaseSize="168,208" -->
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#c4a892" />
@@ -46,12 +47,6 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Resources\AppIcon\appicon.png" />
-	  <None Remove="Resources\Images\touchphoto.svg" />
-	  <None Remove="Resources\Raw\samsung-lg-galaxy-alarm.mp3" />
 	</ItemGroup>
 
 	<ItemGroup>
