@@ -1,0 +1,51 @@
+#.NET MAUI 
+
+# macOS
+.DS_Store
+
+# Rider
+.idea/
+
+# Visual Studio Code
+.vscode/
+.vs/
+
+# NuGet
+packages/
+*.nupkg
+*.paket.restore.json
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific Visual Studio files
+.vscode/
+
+# Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific Visual Studio files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET Scaffolding
+ScaffoldingReadMe.txt
+
+# .NET MAUI output
+bin/
+obj/
+
+# .NET MAUI user-specific files
+*.userprefs
+*.usertasks
