@@ -1,41 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TikTalk.MainPage">
+             x:Class="TikTalk.MainPage"
+             xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             xmlns:viewmodel="clr-namespace:TikTalk.ViewModel"
+             x:DataType="viewmodel:MainPageViewModel"
+             BackgroundColor="{AppThemeBinding Light=black, Dark=black}"
+             Shell.NavBarIsVisible="False">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+    <VerticalStackLayout>
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+        <Grid RowDefinitions="100,Auto,100" ColumnDefinitions="*,Auto,*">
+            <StackLayout Grid.Column="1" 
+                         Grid.Row="1" 
+                         Spacing="50">
+                
+                <!--This is the image circle-->
+                <Border  HorizontalOptions="Center" 
+                         VerticalOptions="Center"
+                         HeightRequest="150" 
+                         WidthRequest="150"
+                         StrokeShape="RoundRectangle 100"
+                         Stroke="Blue"
+                         StrokeThickness="4"
+                         >
+                    <!--Dsiplay image or camera view dynamically-->
+                    <Grid>
+                        <Image Source="{Binding PersonImage, Mode=TwoWay}"
+                           Aspect="AspectFill"
+                           HeightRequest="190"
+                           WidthRequest="190"
+                               IsVisible="{Binding Image}"/>
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+                        <cv:CameraView x:Name="cameraView"
+                                    HeightRequest="190"
+                                    WidthRequest="190"
+                                    CamerasLoaded="OnCamerasLoaded"
+                                    IsVisible="{Binding Camera}"
+                                   ></cv:CameraView>
+                    </Grid>
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+                </Border>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+                <Entry WidthRequest="200" 
+                       Text="{Binding PersonName}" 
+                       Placeholder="Enter your name"
+                       TextColor="White"/>
 
-        </VerticalStackLayout>
-    </ScrollView>
+                <!--Dsiplay buttons dynamically-->
+                <Grid>
+                    <Button Text="Scan QR"  
+                        IsVisible="{Binding FormFilled}"
+                        Command="{Binding GoToScanQRCommand}">
+                    </Button>
+
+                    <Button Text="Take photo"  
+                        IsVisible="{Binding Camera}"
+                        Command="{Binding TakePhotoCommand}">
+                    </Button>
+                </Grid>
+
+                <Button Text="Retake photo"  
+                        IsVisible="{Binding Image}"
+                        Command="{Binding RetakePhotoCommand}"
+                        BackgroundColor="Blue"
+                        TextColor="white">
+                </Button>
+
+            </StackLayout>
+        </Grid>
+        
+        
+    </VerticalStackLayout>
 
 </ContentPage>

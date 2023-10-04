@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:TikTalk.ViewModel"
+             x:DataType="viewmodel:TimerPageViewModel"
+             x:Class="TikTalk.TimerPage"
+             Title="TimerPage"
+             BackgroundColor="{AppThemeBinding Light=black, Dark=black}"
+             Shell.NavBarIsVisible="False">
+
+    <NavigationPage.TitleView>
+        <!-- Define un TitleView personalizado vacío para ocultar el botón de retroceso -->
+        <StackLayout>
+            <!-- Puedes agregar otros elementos aquí si lo deseas -->
+        </StackLayout>
+    </NavigationPage.TitleView>
+    
+    <VerticalStackLayout>
+
+        <Grid RowDefinitions="50,Auto,*" ColumnDefinitions="*,Auto,*">
+            <StackLayout Grid.Column="1" Grid.Row="1" Spacing="50">
+
+
+                <Border  HorizontalOptions="Center" 
+                         VerticalOptions="Center"
+                         HeightRequest="150" 
+                         WidthRequest="150"
+                         StrokeShape="RoundRectangle 100"
+                         Stroke="Blue"
+                         StrokeThickness="4">
+
+                    <Image Source="{Binding PersonImage}"
+                           Aspect="AspectFill"
+                           HeightRequest="190"
+                           WidthRequest="190"/>
+
+                </Border>
+
+
+                <Label WidthRequest="200" 
+                       Text="{Binding PersonName}"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       TextColor="White"
+                       FontSize="20"/>
+
+                <Label WidthRequest="200" 
+                       Text="{Binding Timeleft}"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       TextColor="White"
+                       FontSize="30"/>
+
+                <Button Text="Scan another QR"  
+                        IsVisible="{Binding TimeOver}"
+                        Command="{Binding ScanAgainCommand}"
+                        WidthRequest="200">
+
+                </Button>
+
+                <!--
+                <Button Text="Stop Timer"  
+                        IsVisible="{Binding IsCountingDown}"
+                        Command="{Binding FinishTimerCommand}"
+                        WidthRequest="200">
+
+                </Button>
+                -->
+
+
+            </StackLayout>
+        </Grid>
+
+
+    </VerticalStackLayout>
+</ContentPage>

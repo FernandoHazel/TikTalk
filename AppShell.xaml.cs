@@ -5,6 +5,9 @@
         public AppShell()
         {
             InitializeComponent();
+
+            Routing.RegisterRoute(nameof (QReaderPage), typeof (QReaderPage));
+            Routing.RegisterRoute(nameof(TimerPage), typeof(TimerPage));
         }
     }
 }

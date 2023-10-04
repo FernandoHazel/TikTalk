@@ -15,7 +15,7 @@
 		<ApplicationTitle>TikTalk</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.tiktalk</ApplicationId>
+		<ApplicationId>com.Fhazel.TikTalk</ApplicationId>
 		<ApplicationIdGuid>5f0f842c-4e0b-4993-acd8-9f491898914b</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -32,10 +32,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg"/>
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" BaseSize="128,128" Color="#c4a892"/>
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />

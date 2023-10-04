@@ -1,24 +1,30 @@
-﻿namespace TikTalk
+﻿using Camera.MAUI;
+using TikTalk.ViewModel;
+
+namespace TikTalk
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
-        public MainPage()
+        CameraView cam;
+        public MainPage(MainPageViewModel vm)
         {
             InitializeComponent();
+            BindingContext = vm;
+
+            // Store the camera view to pass it
+            cam = cameraView;
+
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void OnCamerasLoaded(object sender, EventArgs e)
         {
-            count++;
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            if (BindingContext is MainPageViewModel viewModel)
+            {
+                // Maneja el evento en el ViewModel
+                viewModel.CamerasLoadedEventHandler(cam);
+            }
+            
         }
     }
 }
