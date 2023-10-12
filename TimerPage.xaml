@@ -17,8 +17,10 @@
     
     <VerticalStackLayout>
 
-        <Grid RowDefinitions="50,Auto,*" ColumnDefinitions="*,Auto,*">
-            <StackLayout Grid.Column="1" Grid.Row="1" Spacing="50">
+        <Grid RowDefinitions="{Binding Rows, Mode=TwoWay}" 
+              ColumnDefinitions="{Binding Columns, Mode=TwoWay}">
+            
+            <StackLayout Grid.Column="1" Grid.Row="1" Spacing="{Binding Spacing}">
 
 
                 <Border  HorizontalOptions="Center" 

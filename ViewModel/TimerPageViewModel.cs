@@ -47,11 +47,24 @@ namespace TikTalk.ViewModel
         private int minutes;
         private int seconds;
 
+        //These are the responsive variables
+        [ObservableProperty]
+        RowDefinitionCollection rows;
+        [ObservableProperty]
+        ColumnDefinitionCollection columns;
+        [ObservableProperty]
+        double spacing;
+
+        private Responsive res = new Responsive();
+
         public TimerPageViewModel(string dbpath)
         {
             _dbpath = dbpath;
             Timeleft = time;
-            
+
+            //Make the view responsive
+            AdjustView();
+
             //Take the sting time and make it time variables
             FormatTime();
             RunTimer();
@@ -59,6 +72,14 @@ namespace TikTalk.ViewModel
             //Update the image and name
             CheckMedia();
 
+        }
+
+        private void AdjustView()
+        {
+            //This makes the view responsive
+            Rows = res.rows();
+            Columns = res.colums();
+            Spacing = res.spacing();
         }
 
         public async void CheckMedia()

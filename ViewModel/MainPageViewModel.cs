@@ -34,17 +34,17 @@ namespace TikTalk.ViewModel
         [ObservableProperty]
         CameraView cameraView;
 
+        //These are the responsive variables
+        [ObservableProperty]
+        RowDefinitionCollection rows;
+        [ObservableProperty]
+        ColumnDefinitionCollection columns;
+        [ObservableProperty]
+        double spacing;
+
         private SQLiteAsyncConnection connection;
 
-        //Device screen info
-        public static DisplayInfo displayInfo = DeviceDisplay.MainDisplayInfo;
-        /*
-        var screenWidth = display.Width;
-        var screenHeight = display.Height;
-        var density = display.Density;*/
-
-
-
+        private Responsive res = new Responsive();
 
         public MainPageViewModel(string dbPath)
         {
@@ -52,8 +52,16 @@ namespace TikTalk.ViewModel
 
             _dbpath = dbPath;
 
-            //AdjustView();
+            AdjustView();
             CheckPerson();
+        }
+
+        private void AdjustView()
+        {
+            //This makes the view responsive
+            Rows = res.rows();
+            Columns = res.colums();
+            Spacing = res.spacing();
         }
 
         //We add this intermediate method because cannot run a Task in the view model constructor

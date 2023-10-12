@@ -24,6 +24,7 @@ namespace TikTalk
                 });
 
             //Services
+            builder.Services.AddTransient<Responsive>();
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddTransient<TimerPage>();
             

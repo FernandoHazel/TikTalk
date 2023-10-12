@@ -10,10 +10,12 @@
 
     <VerticalStackLayout>
 
-        <Grid RowDefinitions="100,Auto,100" ColumnDefinitions="*,Auto,*">
+        <Grid RowDefinitions="{Binding Rows, Mode=TwoWay}" 
+              ColumnDefinitions="{Binding Columns, Mode=TwoWay}">
+            
             <StackLayout Grid.Column="1" 
                          Grid.Row="1" 
-                         Spacing="50">
+                         Spacing="{Binding Spacing}">
                 
                 <!--This is the image circle-->
                 <Border  HorizontalOptions="Center" 
@@ -48,15 +50,17 @@
                        TextColor="White"/>
 
                 <!--Dsiplay buttons dynamically-->
-                <Grid>
+                <Grid >
                     <Button Text="Scan QR"  
                         IsVisible="{Binding FormFilled}"
-                        Command="{Binding GoToScanQRCommand}">
+                        Command="{Binding GoToScanQRCommand}"
+                        WidthRequest="200">
                     </Button>
 
                     <Button Text="Take photo"  
                         IsVisible="{Binding Camera}"
-                        Command="{Binding TakePhotoCommand}">
+                        Command="{Binding TakePhotoCommand}"
+                        WidthRequest="200">
                     </Button>
                 </Grid>
 
@@ -64,7 +68,8 @@
                         IsVisible="{Binding Image}"
                         Command="{Binding RetakePhotoCommand}"
                         BackgroundColor="Blue"
-                        TextColor="white">
+                        TextColor="white"
+                        WidthRequest="200">
                 </Button>
 
             </StackLayout>

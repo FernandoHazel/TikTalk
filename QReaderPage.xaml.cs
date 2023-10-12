@@ -9,19 +9,33 @@ namespace TikTalk;
 public partial class QReaderPage : ContentPage
 {
     string _dbpath;
+    int hrs;
+    int min;
+    int sec;
+    Responsive res = new Responsive();
 
     private SQLiteAsyncConnection connection;
     public QReaderPage(string dbpath)
 	{
         _dbpath = dbpath;
-
+        
 		InitializeComponent();
+
+        AdjustView();
     }
 
-
+    private void AdjustView()
+    {
+        mainGrid.RowDefinitions = res.qrRows();
+        mainGrid.ColumnDefinitions = res.qrColums();
+        mainStackLayout.Spacing = res.qrSpacing();
+    }
 
     private void cameraView_CamerasLoaded(object sender, EventArgs e)
     {
+        startButton.IsVisible = false;
+        startButton.IsEnabled = false;
+
         if (cameraView.Cameras.Count > 0)
         {
             cameraView.Camera = cameraView.Cameras.First();
@@ -55,13 +69,14 @@ public partial class QReaderPage : ContentPage
                     TimerPageViewModel.time = qrResult;
 
                     //Display the result in the UI
-                    barcodeResult.Text = $"Horas: {hours}, Minutos: {minutes}, Segundos: {seconds}";
+                    barcodeResult.Text = $"Hrs: {hours}, Min: {minutes}, Sec: {seconds}";
 
-                    //Create the notification
-                    await CreateNotification(new TimeSpan(hours, minutes, seconds));
+                    hrs = hours;
+                    min = minutes;
+                    sec = seconds;
 
-                    //If everything is ok go to the timer page
-                    await GoToTimer();
+                    startButton.IsVisible = true;
+                    startButton.IsEnabled = true;
                 }
                 else
                 {
@@ -150,5 +165,14 @@ public partial class QReaderPage : ContentPage
             await App.Current.MainPage.DisplayAlert("An error ocurrer while going to timer view", $"{ex}", "ok");
         }
        
+    }
+
+    private async void startButton_Clicked(object sender, EventArgs e)
+    {
+        //Create the notification
+        await CreateNotification(new TimeSpan(hrs, min, sec));
+
+        //If everything is ok go to the timer page
+        await GoToTimer();
     }
 }
