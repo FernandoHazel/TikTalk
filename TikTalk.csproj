@@ -32,7 +32,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.png" BaseSize="168,208"/>
 		<!-- ForegroundFile="Resources\AppIcon\appiconfg.png" BaseSize="168,208" -->
 
 		<!-- Splash Screen -->
@@ -66,18 +66,9 @@
 	<!--Build settings for IOS on Release-->
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
 
-
 		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 		<CodesignKey>iPhone Distribution: FERNANDO HAZEL ASCENCIO BAUMGARTEN (9AGHP648CH)</CodesignKey>
 		<CodesignProvision>iOSProfile</CodesignProvision>
-
-		<!--
-		<EnableCodeSigning>true</EnableCodeSigning>
-		<MtouchUseLlvm>true</MtouchUseLlvm>	
-		<AotAssemblies>true</AotAssemblies>
-		<UseInterpreter>true</UseInterpreter>
-	  <CreatePackage>false</CreatePackage>
-		-->
 
 	</PropertyGroup>
 	

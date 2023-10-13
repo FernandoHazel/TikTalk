@@ -248,14 +248,18 @@ namespace TikTalk.ViewModel
 
                 if (stream != null)
                 {
-                    // save the file into local storage
-                    string imageName = $"image.png";
+                    // Define the name and path of the new image
+                    string imageName = $"image_{DateTime.Now.Ticks}.png"; // Agrega un timestamp único al nombre de la imagen
                     LocalImagePath = Path.Combine(FileSystem.CacheDirectory, imageName);
+
+                    // Store the new one
                     using FileStream localFileStream = File.OpenWrite(LocalImagePath);
                     await stream.CopyToAsync(localFileStream);
 
+                    // Set the new file to the view on the UI
                     PersonImage = ImageSource.FromFile(LocalImagePath);
 
+                    //Disabe the camera and enable the photo view
                     Image = true;
                     Camera = false;
                 }
