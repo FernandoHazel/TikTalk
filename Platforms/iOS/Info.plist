@@ -31,9 +31,9 @@
 	<key>MinimumOSVersion</key>
 	<string>11.0</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Necesitamos acceso a tu cámara para tomar fotos.</string>
+	<string>El acceso a la cámara te permite tomarte tu foto de perfil.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Necesitamos acceso a tus fotos para guardar las imágenes capturadas.</string>
+	<string>El acceso a la librería te permite almacenar tu foto de perfil.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -54,7 +54,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Tik &apos;Talk</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app only use your data to make sure that you are the owner of the app while the timer is in use</string>
+	<string>Access to the camera allows you to take photos for your profile and notifications are sent to let you know when your time is over.</string>
 	<key>CFBundleShortVersionString</key>
 	<string>5</string>
 </dict>

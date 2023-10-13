@@ -53,7 +53,7 @@
                        TextColor="White"
                        FontSize="30"/>
 
-                <Button Text="Scan another QR"  
+                <Button Text="Escanear otro QR"  
                         IsVisible="{Binding TimeOver}"
                         Command="{Binding ScanAgainCommand}"
                         WidthRequest="200">

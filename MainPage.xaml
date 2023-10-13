@@ -46,25 +46,25 @@
 
                 <Entry WidthRequest="200" 
                        Text="{Binding PersonName}" 
-                       Placeholder="Enter your name"
+                       Placeholder="Ingresa tu nombre"
                        TextColor="White"/>
 
                 <!--Dsiplay buttons dynamically-->
                 <Grid >
-                    <Button Text="Scan QR"  
+                    <Button Text="Escanear QR"  
                         IsVisible="{Binding FormFilled}"
                         Command="{Binding GoToScanQRCommand}"
                         WidthRequest="200">
                     </Button>
 
-                    <Button Text="Take photo"  
+                    <Button Text="Tomar foto"  
                         IsVisible="{Binding Camera}"
                         Command="{Binding TakePhotoCommand}"
                         WidthRequest="200">
                     </Button>
                 </Grid>
 
-                <Button Text="Retake photo"  
+                <Button Text="Retomar foto"  
                         IsVisible="{Binding Image}"
                         Command="{Binding RetakePhotoCommand}"
                         BackgroundColor="Blue"
