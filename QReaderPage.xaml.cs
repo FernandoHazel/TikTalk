@@ -9,9 +9,11 @@ namespace TikTalk;
 public partial class QReaderPage : ContentPage
 {
     string _dbpath;
-    int hrs;
-    int min;
-    int sec;
+    public static int hrs;
+    public static int min;
+    public static int sec;
+    public static bool isTimerActive = false;
+
     Responsive res = new Responsive();
 
     private SQLiteAsyncConnection connection;
@@ -92,6 +94,13 @@ public partial class QReaderPage : ContentPage
         });
     }
 
+    public static void ResetTime()
+    {
+        hrs = 0;
+        min = 0;
+        sec = 0;
+    }
+
     async Task CreateNotification(TimeSpan timeToAdd)
     {
         //Ask for permission
@@ -107,7 +116,7 @@ public partial class QReaderPage : ContentPage
             Title = "Your time is over!",
             Description = "Open your app to scan another QR",
             ReturningData = "Dummy data", // Returning data when tapped on notification.
-            BadgeNumber = 42,
+            BadgeNumber = 1,
             Schedule = new NotificationRequestSchedule
             {
                 NotifyTime = DateTime.Now.Add(timeToAdd),
@@ -118,7 +127,7 @@ public partial class QReaderPage : ContentPage
         await RegisterNotificationInDB(timeToAdd);
 
         //Program the notification
-        await LocalNotificationCenter.Current.Show(request);
+        await LocalNotificationCenter.Current.Show(request); 
     }
 
     public async Task RegisterNotificationInDB(TimeSpan timeToAdd)
@@ -141,7 +150,7 @@ public partial class QReaderPage : ContentPage
         }
         catch (Exception ex)
         {
-            throw new Exception("Something was wrong while registering the notification");
+            throw new Exception($"Something was wrong while registering the notification: {ex}");
         }
     }
 
@@ -158,7 +167,7 @@ public partial class QReaderPage : ContentPage
     {
         try
         {
-            await Shell.Current.GoToAsync($"{nameof(TimerPage)}");
+            await Shell.Current.GoToAsync($"{nameof(TimerPage)}"); ///<---- Aquí fué el último brake point antes de cerrar
         }
         catch (Exception ex)
         {
@@ -167,12 +176,47 @@ public partial class QReaderPage : ContentPage
        
     }
 
+    private async void SetExpirationDate(TimeSpan timeToAdd)
+    {
+        DateTime expirationDate = DateTime.Now.Add(timeToAdd);
+
+        try
+        {
+            await CheckSQLiteAsyncConnection();
+
+            List<Person> persons = await connection.Table<Person>().ToListAsync();
+
+            //If person exists update data
+            if (persons.Any())
+            {
+                persons[0].ExpirationDate = expirationDate;
+
+                await connection.UpdateAsync(persons[0]);
+            }
+            
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Something was wrong while updating the data: {ex}");
+        }
+    }
+
     private async void startButton_Clicked(object sender, EventArgs e)
     {
         //Create the notification
-        await CreateNotification(new TimeSpan(hrs, min, sec));
+        //await CreateNotification(new TimeSpan(hrs, min, sec)); //<-- La notificación está dando un problema de permisos
 
         //If everything is ok go to the timer page
-        await GoToTimer();
+        if (!isTimerActive) {
+
+            // Set expiration date
+            SetExpirationDate(new TimeSpan(hrs, min, sec));
+
+            await GoToTimer();
+        }
+        else
+        {
+            await App.Current.MainPage.DisplayAlert("Hay otro temporalizador corriendo", $"{TimerPageViewModel.time}", "ok");
+        }
     }
 }

@@ -104,17 +104,17 @@ namespace TikTalk.ViewModel
                     PersonImage = ImageSource.FromFile(LocalImagePath);
                     
 
-                    //If there is a notification scheduled go to the timer view
-                    if (person.scheduledNotification > DateTime.Now)
+                    //If there is an expiration date storaged
+
+                    if (person.ExpirationDate > DateTime.Now)
                     {
                         //Calculate time remaining
-                        TimeSpan remainingTime = person.scheduledNotification - DateTime.Now;
+                        TimeSpan remainingTime = person.ExpirationDate - DateTime.Now;
                         string timeLeft = remainingTime.ToString(@"hh\:mm\:ss");
 
                         //Go to the timer view
                         try
                         {
-                            //await Shell.Current.GoToAsync($"{nameof(TimerPage)}?Timeleft={timeLeft}");
                             TimerPageViewModel.time = timeLeft;
                             await Shell.Current.GoToAsync($"{nameof(TimerPage)}");
                         }
@@ -122,8 +122,10 @@ namespace TikTalk.ViewModel
                         {
                             await App.Current.MainPage.DisplayAlert("An error ocurrer while going to timer view", $"{ex}", "ok");
                         }
-                        
+
                     }
+                    
+                    
 
                 }
                 else

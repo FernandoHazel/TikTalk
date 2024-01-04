@@ -56,6 +56,6 @@
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Access to the camera allows you to take photos for your profile and notifications are sent to let you know when your time is over.</string>
 	<key>CFBundleShortVersionString</key>
-	<string>5</string>
+	<string>6</string>
 </dict>
 </plist>

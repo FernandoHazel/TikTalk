@@ -160,6 +160,7 @@ namespace TikTalk.ViewModel
         public async void RunTimer()
         {
             TimeOver = false;
+            QReaderPage.isTimerActive = true;
 
             //This happens every time the timer elapses
             if (!IsCountingDown)
@@ -181,14 +182,18 @@ namespace TikTalk.ViewModel
                     {
                         remainingTime = TimeSpan.Zero;
                         IsCountingDown = false;
-                        Timeleft = "TIME IS OVER!";
+                        Timeleft = "Se acabó el tiempo!";
                         TimeOver = true;
-                        //Device.BeginInvokeOnMainThread(() => PlayAlarm());
-                        await App.Current.MainPage.DisplayAlert("TIME IS OVER!", "Scan another QR code", "OK");
+                        QReaderPage.isTimerActive = false;
+
+                        QReaderPage.ResetTime();
+
+                        await App.Current.MainPage.DisplayAlert("SE ACABÓ EL TIEMPO!", "Escanea otro QR", "OK");
                         return;
                     }
 
                     Timeleft = remainingTime.ToString(@"hh\:mm\:ss");
+                    time = Timeleft;
                     await Task.Delay(1000); // Espera 1 segundo antes de actualizar de nuevo.
                 }
             }

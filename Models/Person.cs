@@ -10,6 +10,7 @@ namespace TikTalk.Models
         [MaxLength(100)]
         public string Name { get; set; }
         public string ImagePath { get; set; }
+        public DateTime ExpirationDate { get; set; }
         public DateTime scheduledNotification { get; set; }
     }
 }
