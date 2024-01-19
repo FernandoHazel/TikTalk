@@ -44,7 +44,7 @@
 
                 </Border>
 
-                <Entry WidthRequest="200" 
+                <Entry WidthRequest="200"
                        Text="{Binding PersonName}" 
                        Placeholder="Ingresa tu nombre"
                        TextColor="White"/>

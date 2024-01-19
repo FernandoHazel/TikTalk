@@ -33,20 +33,28 @@ public partial class QReaderPage : ContentPage
         mainStackLayout.Spacing = res.qrSpacing();
     }
 
-    private void cameraView_CamerasLoaded(object sender, EventArgs e)
+    private async void cameraView_CamerasLoaded(object sender, EventArgs e)
     {
         startButton.IsVisible = false;
         startButton.IsEnabled = false;
 
-        if (cameraView.Cameras.Count > 0)
+        try
         {
-            cameraView.Camera = cameraView.Cameras.First();
-            MainThread.BeginInvokeOnMainThread(async () =>
+            if (cameraView.Cameras.Count > 0)
             {
+                cameraView.Camera = cameraView.Cameras.First();
+
                 await cameraView.StopCameraAsync();
                 await cameraView.StartCameraAsync();
-            });
+
+            }
+        } catch (Exception ex)
+        {
+            await App.Current.MainPage.DisplayAlert
+                ("Ocurrió un error al iniciar la cámara: ", $"{ex}", "ok");
         }
+
+        
     }
 
     private void cameraView_BarcodeDetected(object sender, Camera.MAUI.ZXingHelper.BarcodeEventArgs args)

@@ -12,8 +12,9 @@ namespace TikTalk
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            
             base.OnCreate(savedInstanceState);
-
+            /*
             const int requestNotification = 0;
             const int requestExactAlarm = 0;
             string[] notiPermission =
@@ -51,7 +52,7 @@ namespace TikTalk
 
             //Handle alarm permissions
             //..
-
+            */
 
         }
     }

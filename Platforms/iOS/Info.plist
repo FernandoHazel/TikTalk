@@ -42,9 +42,9 @@
 	<key>NSLocalizableString</key>
 	<dict>
 		<key>NSLocationWhenInUseUsageDescription</key>
-		<string>Necesitamos acceder a tu ubicación para proporcionar un mejor servicio.</string>
+		<string>Necesitamos acceder a tu ubicación para mandarte promociones personalizadas.</string>
 		<key>NSLocationAlwaysUsageDescription</key>
-		<string>Necesitamos acceder a tu ubicación para proporcionar un mejor servicio.</string>
+		<string>Necesitamos acceder a tu ubicación para mandarte promociones personalizadas.</string>
 	</dict>
 	<key>UIBackgroundModes</key>
 	<array>
@@ -54,8 +54,8 @@
 	<key>CFBundleDisplayName</key>
 	<string>Tik &apos;Talk</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Access to the camera allows you to take photos for your profile and notifications are sent to let you know when your time is over.</string>
+	<string>El acceso a la cámara permite tomar fotos para tu perfil Y las notificaciones te permiten saber cuando el tiempo se terminó.</string>
 	<key>CFBundleShortVersionString</key>
-	<string>6</string>
+	<string>8</string>
 </dict>
 </plist>

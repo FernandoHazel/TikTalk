@@ -16,8 +16,8 @@ using Android.Runtime;
 [assembly: UsesFeature("android.hardware.camera.autofocus", Required = false)]
 
 //Required so that the plugin can reschedule notifications upon a reboot
-[assembly: UsesPermission("android.permission.SCHEDULE_EXACT_ALARM")]
-[assembly: UsesPermission("android.permission.POST_NOTIFICATIONS")]
+//[assembly: UsesPermission("android.permission.SCHEDULE_EXACT_ALARM")]
+//[assembly: UsesPermission("android.permission.POST_NOTIFICATIONS")]
 
 namespace TikTalk
 {
